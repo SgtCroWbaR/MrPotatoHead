@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Potato"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\cmake\modules\;CMake Files\configuration\;CMake Files\resources\;CMake Files\resources\shaders\;CMake Files\libs\;CMake Files\libs\glad\;CMake Files\libs\imgui\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Potato">
+				<Option output="C:/Users/Vessely/Desktop/MrPotatoHead/bin/Potato.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/configuration"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/include"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/include"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 Potato"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Potato/fast">
+				<Option output="C:/Users/Vessely/Desktop/MrPotatoHead/bin/Potato.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/configuration"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/include"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/include"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 Potato/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="STB_IMAGE">
+				<Option output="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/STB_IMAGE.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/configuration"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 STB_IMAGE"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="STB_IMAGE/fast">
+				<Option output="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/STB_IMAGE.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/configuration"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 STB_IMAGE/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad">
+				<Option output="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/libs/glad/glad.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/libs/glad"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\glad\Makefile VERBOSE=1 glad"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\glad\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\glad\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\glad\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad/fast">
+				<Option output="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/libs/glad/glad.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/libs/glad"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\glad\Makefile VERBOSE=1 glad/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\glad\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\glad\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\glad\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="imgui">
+				<Option output="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/libs/imgui/imgui.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/libs/imgui"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/include"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\imgui\Makefile VERBOSE=1 imgui"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\imgui\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\imgui\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\imgui\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="imgui/fast">
+				<Option output="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/libs/imgui/imgui.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Vessely/Desktop/MrPotatoHead/cmake-build-debug/libs/imgui"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DIMGUI_IMPL_OPENGL_LOADER_GLAD"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/include"/>
+					<Add directory="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\imgui\Makefile VERBOSE=1 imgui/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\imgui\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\imgui\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\Vessely\Desktop\MrPotatoHead\cmake-build-debug\libs\imgui\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/include/glad/glad.h">
+			<Option target="glad"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/src/glad.c">
+			<Option target="glad"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include/imconfig.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include/imgui.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include/imgui_impl_glfw.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include/imgui_impl_opengl3.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include/imgui_internal.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include/imstb_rectpack.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include/imstb_textedit.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/include/imstb_truetype.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/src/imgui.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/src/imgui_demo.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/src/imgui_draw.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/src/imgui_impl_glfw.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/src/imgui_impl_opengl3.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/src/imgui_tables.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/src/imgui_widgets.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/stb_image.cpp">
+			<Option target="STB_IMAGE"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/src/main.cpp">
+			<Option target="Potato"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/cmake/modules/FindASSIMP.cmake">
+			<Option virtualFolder="CMake Files\cmake\modules\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/cmake/modules/FindGLFW3.cmake">
+			<Option virtualFolder="CMake Files\cmake\modules\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/cmake/modules/FindGLM.cmake">
+			<Option virtualFolder="CMake Files\cmake\modules\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/configuration/root_directory.h.in">
+			<Option virtualFolder="CMake Files\configuration\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/2.model_lighting.fs">
+			<Option virtualFolder="CMake Files\resources\shaders\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/2.model_lighting.vs">
+			<Option virtualFolder="CMake Files\resources\shaders\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glad\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/imgui/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\imgui\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
