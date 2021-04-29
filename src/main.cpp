@@ -27,8 +27,8 @@ void processInput(GLFWwindow *window);
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
 
 // settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_WIDTH = 800;//800
+const unsigned int SCR_HEIGHT = 800;//600
 
 // camera
 
@@ -161,8 +161,70 @@ int main() {
 
     // build and compile shaders
     // -------------------------
-    Shader ourShader("resources/shaders/2.model_lighting.vs", "resources/shaders/2.model_lighting.fs");
+    //Shader ourShader("resources/shaders/2.model_lighting.vs", "resources/shaders/2.model_lighting.fs");
+    Shader ourShader("resources/shaders/vertex_shader.vs","resources/shaders/fragment_shader.fs");
 
+    //moja kocka
+    //////////////////////////////////////////////////////////////////////
+    float vertices[] = {
+            0.5f, 0.5f, 0.0f, 1.0f, 1.0f,
+            0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+            -0.5f,  0.5f, 0.0f, 0.0f, 1.0f
+    };
+    unsigned indices[] = {
+            0, 1, 3,
+            1, 2, 3
+    };
+
+    unsigned int VBO, VAO, EBO;
+
+    glGenVertexArrays(1,&VAO);
+    glBindVertexArray(VAO);
+
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER,VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),vertices,GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,5*sizeof(float),(void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,5*sizeof(float),(void*)(3*sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    unsigned tex0;
+    glGenTextures(1,&tex0);
+    glBindTexture(GL_TEXTURE_2D, tex0);
+    //wrap
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    //filter
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    //load
+    int width, height, nChannel;
+    unsigned char *data = stbi_load("resources/textures/kriss.jpg", &width, &height, &nChannel, 0);
+
+    if(data){
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }else{
+        std::cerr << "Failed to load texture!" << std::endl;
+    }
+    stbi_image_free(data);
+
+    ourShader.setInt("t0", 0);
+
+    glBindBuffer(GL_ARRAY_BUFFER,0);
+    glBindVertexArray(0);
+    //////////////////////////////////////////////////////////////////////////
     // load models
     // -----------
     Model ourModel("resources/objects/backpack/backpack.obj");
@@ -202,7 +264,56 @@ int main() {
         glClearColor(programState->clearColor.r, programState->clearColor.g, programState->clearColor.b, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, tex0);
+        //crtaj moj shader
+        ourShader.use();
+
+        //int uniformId =glGetUniformLocation(shaderProgram, "gColor");
+        //lUniform4f(uniformId, sin(glfwGetTime()) /2.0 * 0.5, 0.0, 0.0, 1.0);
+
+
+        //scale, rotate, translate
+        //UGASENO U VS, ne mnozim sa uniformom promenljivom
+        glm::mat4 m = glm::mat4(1.0f);
+
+        m = glm::translate(m, glm::vec3(0.5, -0.6, 0.0));
+        //m = glm::translate(m, glm::vec3(sin(glfwGetTime()) /2.0 * 0.5, sin(glfwGetTime()) /2.0 * 0.5, 0.0f));
+        m = glm::rotate(m, glm::radians(45.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        //m = glm::rotate(m, (float)(glfwGetTime()), glm::vec3(0.0f, 0.0f, 1.0f));
+        m = glm::scale(m, glm::vec3(0.5, 0.5, 1.0f));
+        //m = glm::scale(m, glm::vec3(sin(glfwGetTime()) /2.0 * 0.5, sin(glfwGetTime()) /2.0 * 0.5, 1.0f));
+
+        //int locationId = glGetUniformLocation(ourShader.ID, "model");
+        //glUniformMatrix4fv(locationId, 1, GL_FALSE, glm::value_ptr(m));
+
+
+        //rotiram u 3D, matrice transformacija
+
+        glm::mat4 model = glm::mat4(1.0f);
+        glm::mat4 view = glm::mat4(1.0f);
+        glm::mat4 projection = glm::mat4(1.0f);
+
+        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+        projection = glm::perspective(glm::radians(45.0f),(float)SCR_WIDTH / SCR_HEIGHT, 0.1f, 100.0f);
+
+
+        unsigned modelLoc = glGetUniformLocation(ourShader.ID, "model");
+        unsigned viewLoc = glGetUniformLocation(ourShader.ID, "view");
+        unsigned projectionLoc = glGetUniformLocation(ourShader.ID, "projection");
+
+        //glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); //jedan nacin
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model[0][0]);            //drugi nacin
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, &projection[0][0]);  //jedan nacin
+        //ourShader.setMat4("projection", projection);                      //apstrahovanje nasmo klasom
+
+        //render container
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         // don't forget to enable shader before setting uniforms
+        /***********************
         ourShader.use();
         pointLight.position = glm::vec3(4.0 * cos(currentFrame), 4.0f, 4.0 * sin(currentFrame));
         ourShader.setVec3("pointLight.position", pointLight.position);
@@ -228,7 +339,7 @@ int main() {
         model = glm::scale(model, glm::vec3(programState->backpackScale));    // it's a bit too big for our scene, so scale it down
         ourShader.setMat4("model", model);
         ourModel.Draw(ourShader);
-
+        ************/
         if (programState->ImGuiEnabled)
             DrawImGui(programState);
 
@@ -239,14 +350,16 @@ int main() {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
+    /***********
     programState->SaveToFile("resources/program_state.txt");
     delete programState;
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
+     ***********/
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
+
     glfwTerminate();
     return 0;
 }
