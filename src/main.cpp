@@ -267,8 +267,8 @@ int main() {
     // -----------
 
     // new models
-    Model ourModelPotato("resources/objects/blender/potato.obj");
-    //ourModelPotato.SetShaderTextureNamePrefix("material.");
+    Model ourModelPotato("resources/objects/potato_final_new/potato_final.obj");
+    ourModelPotato.SetShaderTextureNamePrefix("material.");
     /********
     Model ourModelHat("resources/objects/mr_potato_head/hat.obj");
     ourModelHat.SetShaderTextureNamePrefix("material.");
@@ -366,8 +366,11 @@ int main() {
         glm::mat4 projection2 = glm::perspective(glm::radians(45.0f),(float) SCR_WIDTH / (float) SCR_HEIGHT, 0.1f, 100.0f);
         ourShaderModel.setMat4("projection", projection2);
         glm::mat4 modelPotato = glm::mat4(1.0f);
+        //modelPotato = glm::rotate_slow(modelPotato, (float)glfwGetTime()/10, glm::vec3(0.0,1.0,0.0));
         //modelPotato = glm::rotate(modelPotato, glm::radians(90.0f), glm::vec3(-1.0,0.0,0.0));
-        modelPotato = glm::scale(modelPotato, glm::vec3(0.7f));
+        //modelPotato = glm::translate(modelPotato,glm::vec3(0,1.5,-1));
+        modelPotato = glm::scale(modelPotato, glm::vec3(0.1f));
+
         ourShaderModel.setMat4("model", modelPotato);
         ourModelPotato.Draw(ourShaderModel);
 
