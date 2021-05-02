@@ -12,7 +12,13 @@ enum Camera_Movement {
     FORWARD,
     BACKWARD,
     LEFT,
-    RIGHT
+    RIGHT,
+    UP,
+    DOWN,
+    UP_PITCH,
+    DOWN_PITCH,
+    LEFT_YAW,
+    RIGHT_YAW
 };
 
 // Default camera values
@@ -78,6 +84,28 @@ public:
             Position -= Right * velocity;
         if (direction == RIGHT)
             Position += Right * velocity;
+
+        if (direction == UP)
+            Position += Up * velocity;
+        if (direction == DOWN)
+            Position -= Up * velocity;
+
+        unsigned pitchSpeed = 15;
+        if (direction == UP_PITCH)
+            Pitch += pitchSpeed * velocity;
+        if (direction == DOWN_PITCH)
+            Pitch -= pitchSpeed * velocity;
+        if (direction == LEFT_YAW)
+            Yaw -= pitchSpeed * velocity;
+        if (direction == RIGHT_YAW)
+            Yaw += pitchSpeed * velocity;
+
+        if (Pitch > 89.0f)
+            Pitch = 89.0f;
+        if (Pitch < -89.0f)
+            Pitch = -89.0f;
+
+        updateCameraVectors();
     }
 
     // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
@@ -90,6 +118,8 @@ public:
         Pitch += yoffset;
 
         // make sure that when pitch is out of bounds, screen doesn't get flipped
+        //[HACK]no constrain
+        ///**************
         if (constrainPitch)
         {
             if (Pitch > 89.0f)
@@ -97,7 +127,7 @@ public:
             if (Pitch < -89.0f)
                 Pitch = -89.0f;
         }
-
+        //*****************/
         // update Front, Right and Up Vectors using the updated Euler angles
         updateCameraVectors();
     }

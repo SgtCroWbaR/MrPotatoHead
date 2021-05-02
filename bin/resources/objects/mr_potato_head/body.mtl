@@ -1,0 +1,22 @@
+# Exported from 3D Builder
+
+newmtl eyelid_orange_0_0_0
+Kd 0.904366 0.605911 0.218649
+
+newmtl hat_black_0_0_0
+Kd 0.110702 0.110702 0.110702
+
+newmtl material_0_0_0
+Kd 0.863788 0.250260 0.131804
+
+newmtl bmustache_lack_0_0_0
+Kd 0.150005 0.084945 0.049840
+
+newmtl nose_orange_0_0_0
+Kd 0.912197 0.497533 0.000000
+
+newmtl white_0_0_0
+Kd 0.979022 0.979022 0.979022
+
+newmtl body_orange_0_0_0
+Kd 0.904366 0.602582 0.218649

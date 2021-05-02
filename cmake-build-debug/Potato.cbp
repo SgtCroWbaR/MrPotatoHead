@@ -308,6 +308,12 @@
 		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/2.model_lighting.vs">
 			<Option virtualFolder="CMake Files\resources\shaders\"/>
 		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/fragment_shader.fs">
+			<Option virtualFolder="CMake Files\resources\shaders\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/vertex_shader.vs">
+			<Option virtualFolder="CMake Files\resources\shaders\"/>
+		</Unit>
 		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/libs/glad/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\libs\glad\"/>
 		</Unit>
