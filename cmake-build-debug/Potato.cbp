@@ -302,13 +302,13 @@
 		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/configuration/root_directory.h.in">
 			<Option virtualFolder="CMake Files\configuration\"/>
 		</Unit>
-		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/2.model_lighting.fs">
-			<Option virtualFolder="CMake Files\resources\shaders\"/>
-		</Unit>
-		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/2.model_lighting.vs">
-			<Option virtualFolder="CMake Files\resources\shaders\"/>
-		</Unit>
 		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/fragment_shader.fs">
+			<Option virtualFolder="CMake Files\resources\shaders\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/model_lighting.fs">
+			<Option virtualFolder="CMake Files\resources\shaders\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/model_lighting.vs">
 			<Option virtualFolder="CMake Files\resources\shaders\"/>
 		</Unit>
 		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/vertex_shader.vs">

@@ -160,8 +160,6 @@ int main() {
     ImGuiIO &io = ImGui::GetIO();
     (void) io;
 
-
-
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 330 core");
 
@@ -171,7 +169,7 @@ int main() {
 
     // build and compile shaders
     // -------------------------
-    Shader ourShaderModel("resources/shaders/2.model_lighting.vs", "resources/shaders/2.model_lighting.fs");
+    Shader ourShaderModel("resources/shaders/model_lighting.vs", "resources/shaders/model_lighting.fs");
     Shader ourShaderBase("resources/shaders/vertex_shader.vs","resources/shaders/fragment_shader.fs");
 
     //moja kocka
@@ -300,9 +298,7 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-
         ///////////////////////////////////////////////////////////////////////////
-        // POSTOLJE
         ourShaderBase.use();
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = glm::mat4(1.0f);
@@ -333,7 +329,6 @@ int main() {
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
         //////////////////////////////////////////////////////////////////////////////////////
-        // KROMPIR
         ourShaderModel.use();
         pointLight.position = glm::vec3(programState->camera.Position);
         ourShaderModel.setVec3("pointLight.position", pointLight.position);
@@ -431,8 +426,8 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
 // -------------------------------------------------------
 void mouse_callback(GLFWwindow *window, double xpos, double ypos) {
     if (firstMouse) {
-        //lastX = xpos;
-        //lastY = ypos;
+        lastX = xpos;
+        lastY = ypos;
         firstMouse = false;
     }
 

@@ -40,9 +40,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../configuration/root_directory.h.in"
   "../libs/glad/CMakeLists.txt"
   "../libs/imgui/CMakeLists.txt"
-  "../resources/shaders/2.model_lighting.fs"
-  "../resources/shaders/2.model_lighting.vs"
   "../resources/shaders/fragment_shader.fs"
+  "../resources/shaders/model_lighting.fs"
+  "../resources/shaders/model_lighting.vs"
   "../resources/shaders/vertex_shader.vs"
   )
 
