@@ -1,0 +1,24 @@
+# Exported from 3D Builder
+
+newmtl Mat_0
+Kd 1.000000 1.000000 1.000000
+map_Kd telo.jpg
+
+newmtl Mat_1
+Kd 1.000000 1.000000 1.000000
+map_Kd crno.jpg
+
+newmtl Mat_2
+Kd 1.000000 1.000000 1.000000
+map_Kd usta.jpg
+
+newmtl Mat_3
+Kd 1.000000 1.000000 1.000000
+map_Kd nos.jpg
+
+newmtl white_0
+Kd 0.952941 0.952941 0.952941
+
+newmtl Mat_4
+Kd 1.000000 1.000000 1.000000
+map_Kd belo.jpg

@@ -29,6 +29,8 @@ const float SENSITIVITY =  0.1f;
 const float ZOOM        =  45.0f;
 
 
+
+
 // An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
 class Camera
 {
@@ -105,6 +107,8 @@ public:
         if (Pitch < -89.0f)
             Pitch = -89.0f;
 
+
+
         updateCameraVectors();
     }
 
@@ -119,7 +123,7 @@ public:
 
         // make sure that when pitch is out of bounds, screen doesn't get flipped
         //[HACK]no constrain
-        ///**************
+
         if (constrainPitch)
         {
             if (Pitch > 89.0f)
@@ -127,7 +131,7 @@ public:
             if (Pitch < -89.0f)
                 Pitch = -89.0f;
         }
-        //*****************/
+
         // update Front, Right and Up Vectors using the updated Euler angles
         updateCameraVectors();
     }

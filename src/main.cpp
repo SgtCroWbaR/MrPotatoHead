@@ -28,6 +28,7 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
 
 unsigned int loadTexture(const char *path);
 
+
 // settings
 const unsigned int SCR_WIDTH = 1280;//800
 const unsigned int SCR_HEIGHT = 720;//600
@@ -57,7 +58,7 @@ struct ProgramState {
     glm::vec3 clearColor = glm::vec3(0);
     bool ImGuiEnabled = false;
     Camera camera;
-    bool CameraMouseMovementUpdateEnabled = true;
+    bool CameraMouseMovementUpdateEnabled = false;
     glm::vec3 backpackPosition = glm::vec3(0.0f);
     float backpackScale = 1.0f;
     PointLight pointLight;
@@ -142,10 +143,10 @@ int main() {
     // tell stb_image.h to flip loaded texture's on the y-axis (before loading model).
     stbi_set_flip_vertically_on_load(true);
 
-    programState = new ProgramState;
+    programState = new ProgramState();
     programState->LoadFromFile("resources/program_state.txt");
     if (programState->ImGuiEnabled) {
-        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);//GLFW_CURSOR_DISABLED//NORMAL
     }
     // Init Imgui
     IMGUI_CHECKVERSION();
@@ -165,7 +166,7 @@ int main() {
     // build and compile shaders
     // -------------------------
     Shader ourShaderModel("resources/shaders/2.model_lighting.vs", "resources/shaders/2.model_lighting.fs");
-    Shader ourShader("resources/shaders/vertex_shader.vs","resources/shaders/fragment_shader.fs");
+    Shader ourShaderBase("resources/shaders/vertex_shader.vs","resources/shaders/fragment_shader.fs");
 
     //moja kocka
     //////////////////////////////////////////////////////////////////////
@@ -257,25 +258,19 @@ int main() {
     unsigned int diffuseMap = loadTexture(FileSystem::getPath("resources/textures/stone_diffuse.jpg").c_str());
     unsigned int specularMap = loadTexture(FileSystem::getPath("resources/textures/stone_specular.jpg").c_str());
 
-    ourShader.use();
-    ourShader.setInt("material.diffuse",0);
-    ourShader.setInt("material.specular",1);
+    ourShaderBase.use();
+    ourShaderBase.setInt("material.diffuse",0);
+    ourShaderBase.setInt("material.specular",1);
     glm::vec3 lightDir(-3.0f, 3.0f, 2.0f);
 
 
     // load models
-    // -----------
+    Model ourModelBody("resources/objects/potato/body.obj");
+    Model ourModelHat("resources/objects/potato/hat.obj");
+    Model ourModelEars("resources/objects/potato/ears.obj");
+    Model ourModelArms("resources/objects/potato/arms.obj");
+    Model ourModelLegs("resources/objects/potato/legs.obj");
 
-    // new models
-    Model ourModelPotato("resources/objects/potato_final_new/potato_final.obj");
-    ourModelPotato.SetShaderTextureNamePrefix("material.");
-    /********
-    Model ourModelHat("resources/objects/mr_potato_head/hat.obj");
-    ourModelHat.SetShaderTextureNamePrefix("material.");
-
-    Model ourModelEars("resources/objects/mr_potato_head/ears.obj");
-    ourModelEars.SetShaderTextureNamePrefix("material.");
-    **********/
 
     PointLight& pointLight = programState->pointLight;
     pointLight.position = glm::vec3(4.0f, 4.0, 0.0);
@@ -302,34 +297,25 @@ int main() {
 
         ///////////////////////////////////////////////////////////////////////////
         // POSTOLJE
-        ourShader.use();
-
+        ourShaderBase.use();
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = glm::mat4(1.0f);
         glm::mat4 projection = glm::mat4(1.0f);
-
-        //iz program state vadim podatke (hardkodovano izmedju instanci)
-        //glm::vec3 program_state_vec = glm::vec3(-0.0781355,-1.73487,-0.67665);
-        ourShader.setVec3("light.direction", lightDir);
-        ourShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
-        ourShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
-        ourShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-        ourShader.setFloat("material.shininess", 64.0f);
-
-
-        //model = glm::translate(model,program_state_vec);
+        ourShaderBase.setVec3("light.direction", lightDir);
+        ourShaderBase.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+        ourShaderBase.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+        ourShaderBase.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        ourShaderBase.setFloat("material.shininess", 64.0f);
         view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
         //model = glm::rotate_slow(model, (float)glfwGetTime()/10, glm::vec3(0.0,1.0,0.0));
         model = glm::scale(model,glm::vec3(3.0f));
         model = glm::scale(model,glm::vec3(1.0f,0.1f,1.0f));
-        //bez ovog reda pomeram kocku gde treba, ugasim program, vezem view za kameru
         view = programState->camera.GetViewMatrix();
         projection = glm::perspective(glm::radians(45.0f),(float) SCR_WIDTH / (float) SCR_HEIGHT, 0.1f, 100.0f);
-
-        ourShader.setMat4("model", model);
-        ourShader.setVec3("viewPos", programState->camera.Position);
-        ourShader.setMat4("view", view);
-        ourShader.setMat4("projection", projection);
+        ourShaderBase.setMat4("model", model);
+        ourShaderBase.setVec3("viewPos", programState->camera.Position);
+        ourShaderBase.setMat4("view", view);
+        ourShaderBase.setMat4("projection", projection);
 
 
         glActiveTexture(GL_TEXTURE0);
@@ -343,9 +329,7 @@ int main() {
         //////////////////////////////////////////////////////////////////////////////////////
         // KROMPIR
         ourShaderModel.use();
-        //pointLight.position = glm::vec3(4.0 * cos(currentFrame), 6.0f, 8+2.0 * sin(currentFrame));
         pointLight.position = glm::vec3(programState->camera.Position);
-        //pointLight.position = glm::vec3(0, 5.0f, 10);
         ourShaderModel.setVec3("pointLight.position", pointLight.position);
         ourShaderModel.setVec3("pointLight.ambient", pointLight.ambient);
         ourShaderModel.setVec3("pointLight.diffuse", pointLight.diffuse);
@@ -353,46 +337,28 @@ int main() {
         ourShaderModel.setFloat("pointLight.constant", pointLight.constant);
         ourShaderModel.setFloat("pointLight.linear", pointLight.linear);
         ourShaderModel.setFloat("pointLight.quadratic", pointLight.quadratic);
-
         ourShaderModel.setVec3("viewPosition", programState->camera.Position);
         ourShaderModel.setFloat("material.shininess", 64.0f);//256 tackasto, manja vrednost rasipanje
-        // view/projection transformations
-
         // body
-
-        //view = glm::rotate(programState->camera.GetViewMatrix(), glm::radians(90.0f), glm::vec3(-1.0,0.0,0.0));
         view = programState->camera.GetViewMatrix();
-        ourShaderModel.setMat4("view", view);
-        glm::mat4 projection2 = glm::perspective(glm::radians(45.0f),(float) SCR_WIDTH / (float) SCR_HEIGHT, 0.1f, 100.0f);
-        ourShaderModel.setMat4("projection", projection2);
         glm::mat4 modelPotato = glm::mat4(1.0f);
         //modelPotato = glm::rotate_slow(modelPotato, (float)glfwGetTime()/10, glm::vec3(0.0,1.0,0.0));
-        //modelPotato = glm::rotate(modelPotato, glm::radians(90.0f), glm::vec3(-1.0,0.0,0.0));
-        //modelPotato = glm::translate(modelPotato,glm::vec3(0,1.5,-1));
-        modelPotato = glm::scale(modelPotato, glm::vec3(0.1f));
+        modelPotato = glm::rotate(modelPotato, glm::radians(-90.0f), glm::vec3(0.0,1.0,0.0));
+        modelPotato = glm::translate(modelPotato,glm::vec3(0,0.16,0));
+        modelPotato = glm::scale(modelPotato, glm::vec3(0.04f));
 
+        ourShaderModel.setMat4("view", view);
+        ourShaderModel.setMat4("projection", projection);
         ourShaderModel.setMat4("model", modelPotato);
-        ourModelPotato.Draw(ourShaderModel);
 
-        /*****************
-        // hat
-        glm::mat4 modelHat = glm::mat4(1.0f);
-        modelHat = glm::rotate(modelHat, glm::radians(-90.0f), glm::vec3(1.0,0.0,0.0));
-        modelHat = glm::scale(modelHat, glm::vec3(0.01f));
-        ourShaderModel.setMat4("model", modelHat);
+        ourModelBody.Draw(ourShaderModel);
         ourModelHat.Draw(ourShaderModel);
-
-        // ears
-        glm::mat4 modelEars = glm::mat4(1.0f);
-        modelEars = glm::rotate(modelEars, glm::radians(-90.0f), glm::vec3(1.0,0.0,0.0));
-        modelEars = glm::scale(modelEars, glm::vec3(0.01f));
-        ourShaderModel.setMat4("model", modelEars);
         ourModelEars.Draw(ourShaderModel);
-        ******************/
+        ourModelArms.Draw(ourShaderModel);
+        ourModelLegs.Draw(ourShaderModel);
 
         if (programState->ImGuiEnabled)
             DrawImGui(programState);
-
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
@@ -459,8 +425,8 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
 // -------------------------------------------------------
 void mouse_callback(GLFWwindow *window, double xpos, double ypos) {
     if (firstMouse) {
-        lastX = xpos;
-        lastY = ypos;
+        //lastX = xpos;
+        //lastY = ypos;
         firstMouse = false;
     }
 
@@ -524,6 +490,9 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
         } else {
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         }
+    }
+    if (key == GLFW_KEY_M && action == GLFW_PRESS){
+        programState->CameraMouseMovementUpdateEnabled = !programState->CameraMouseMovementUpdateEnabled;
     }
 }
 

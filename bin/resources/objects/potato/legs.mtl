@@ -1,0 +1,8 @@
+# Exported from 3D Builder
+
+newmtl blue_0
+Kd 0.082353 0.368627 0.890196
+
+newmtl Mat_0
+Kd 1.000000 1.000000 1.000000
+map_Kd patike.jpg
