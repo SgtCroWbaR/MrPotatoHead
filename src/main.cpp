@@ -33,6 +33,14 @@ unsigned int loadTexture(const char *path);
 const unsigned int SCR_WIDTH = 1280;//800
 const unsigned int SCR_HEIGHT = 720;//600
 
+//toggle flags
+bool body_t = true;
+bool hat_t = true;
+bool ears_t = true;
+bool arms_t = true;
+bool legs_t = true;
+
+
 // camera
 
 float lastX = SCR_WIDTH / 2.0f;
@@ -59,8 +67,6 @@ struct ProgramState {
     bool ImGuiEnabled = false;
     Camera camera;
     bool CameraMouseMovementUpdateEnabled = false;
-    glm::vec3 backpackPosition = glm::vec3(0.0f);
-    float backpackScale = 1.0f;
     PointLight pointLight;
     ProgramState()
             : camera(glm::vec3(0.0f, 0.0f, 3.0f)) {}
@@ -351,11 +357,11 @@ int main() {
         ourShaderModel.setMat4("projection", projection);
         ourShaderModel.setMat4("model", modelPotato);
 
-        ourModelBody.Draw(ourShaderModel);
-        ourModelHat.Draw(ourShaderModel);
-        ourModelEars.Draw(ourShaderModel);
-        ourModelArms.Draw(ourShaderModel);
-        ourModelLegs.Draw(ourShaderModel);
+        if(body_t)ourModelBody.Draw(ourShaderModel);
+        if(hat_t)ourModelHat.Draw(ourShaderModel);
+        if(ears_t)ourModelEars.Draw(ourShaderModel);
+        if(arms_t)ourModelArms.Draw(ourShaderModel);
+        if(legs_t)ourModelLegs.Draw(ourShaderModel);
 
         if (programState->ImGuiEnabled)
             DrawImGui(programState);
@@ -453,17 +459,23 @@ void DrawImGui(ProgramState *programState) {
 
 
     {
-        static float f = 0.0f;
         ImGui::Begin("Hello window");
         ImGui::Text("Hello text");
-        ImGui::SliderFloat("Float slider", &f, 0.0, 1.0);
         ImGui::ColorEdit3("Background color", (float *) &programState->clearColor);
-        ImGui::DragFloat3("Backpack position", (float*)&programState->backpackPosition);
-        ImGui::DragFloat("Backpack scale", &programState->backpackScale, 0.05, 0.1, 4.0);
-
         ImGui::DragFloat("pointLight.constant", &programState->pointLight.constant, 0.05, 0.0, 1.0);
         ImGui::DragFloat("pointLight.linear", &programState->pointLight.linear, 0.05, 0.0, 1.0);
         ImGui::DragFloat("pointLight.quadratic", &programState->pointLight.quadratic, 0.05, 0.0, 1.0);
+        ImGui::End();
+    }
+
+    {
+        ImGui::Begin("Toggle parts");
+        ImGui::Checkbox("Body", &body_t);
+        ImGui::Checkbox("Hat", &hat_t);
+        ImGui::Checkbox("Ears", &ears_t);
+        ImGui::Checkbox("Arms", &arms_t);
+        ImGui::Checkbox("Legs", &legs_t);
+
         ImGui::End();
     }
 
