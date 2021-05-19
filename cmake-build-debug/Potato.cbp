@@ -311,6 +311,12 @@
 		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/model_lighting.vs">
 			<Option virtualFolder="CMake Files\resources\shaders\"/>
 		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/skybox.fs">
+			<Option virtualFolder="CMake Files\resources\shaders\"/>
+		</Unit>
+		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/skybox.vs">
+			<Option virtualFolder="CMake Files\resources\shaders\"/>
+		</Unit>
 		<Unit filename="C:/Users/Vessely/Desktop/MrPotatoHead/resources/shaders/vertex_shader.vs">
 			<Option virtualFolder="CMake Files\resources\shaders\"/>
 		</Unit>

@@ -43,6 +43,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/shaders/fragment_shader.fs"
   "../resources/shaders/model_lighting.fs"
   "../resources/shaders/model_lighting.vs"
+  "../resources/shaders/skybox.fs"
+  "../resources/shaders/skybox.vs"
   "../resources/shaders/vertex_shader.vs"
   )
 

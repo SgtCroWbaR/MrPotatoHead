@@ -26,7 +26,7 @@ void processInput(GLFWwindow *window);
 
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
 
-unsigned int loadTexture(const char *path);
+unsigned int loadTexture(const char *path, bool gammaCorrection);
 
 unsigned int loadCubemap(vector<std::string> faces);
 
@@ -40,7 +40,7 @@ bool hat_t = true;
 bool ears_t = true;
 bool arms_t = true;
 bool legs_t = true;
-
+bool gamma_t = true;
 
 // camera
 
@@ -314,10 +314,9 @@ int main() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     //////////////////////////////////////////////////////////////////////////
     //import tex
-    unsigned int diffuseMap = loadTexture(FileSystem::getPath("resources/textures/stone_diffuse.jpg").c_str());
-    unsigned int specularMap = loadTexture(FileSystem::getPath("resources/textures/stone_specular.jpg").c_str());
+    unsigned int diffuseMap = loadTexture(FileSystem::getPath("resources/textures/stone_diffuse.jpg").c_str(),false);
+    unsigned int specularMap = loadTexture(FileSystem::getPath("resources/textures/stone_specular.jpg").c_str(),false);
 
-    unsigned int cubeTexture = loadTexture(FileSystem::getPath("resources/textures/container.jpg").c_str());
 
     vector<std::string> faces
             {
@@ -411,6 +410,7 @@ int main() {
         ourShaderModel.setFloat("pointLight.quadratic", pointLight.quadratic);
         ourShaderModel.setVec3("viewPosition", programState->camera.Position);
         ourShaderModel.setFloat("material.shininess", 64.0f);//256 tackasto, manja vrednost rasipanje
+        ourShaderModel.setBool("gamma",gamma_t);
         // body
         view = programState->camera.GetViewMatrix();
         glm::mat4 modelPotato = glm::mat4(1.0f);
@@ -537,12 +537,11 @@ void DrawImGui(ProgramState *programState) {
 
 
     {
-        ImGui::Begin("Hello window");
-        ImGui::Text("Hello text");
-        ImGui::ColorEdit3("Background color", (float *) &programState->clearColor);
+        ImGui::Begin("Lighting");
         ImGui::DragFloat("pointLight.constant", &programState->pointLight.constant, 0.05, 0.0, 1.0);
         ImGui::DragFloat("pointLight.linear", &programState->pointLight.linear, 0.05, 0.0, 1.0);
         ImGui::DragFloat("pointLight.quadratic", &programState->pointLight.quadratic, 0.05, 0.0, 1.0);
+        ImGui::Checkbox("Gamma correction", &gamma_t);
         ImGui::End();
     }
 
@@ -586,7 +585,7 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
     }
 }
 
-unsigned int loadTexture(char const * path)
+unsigned int loadTexture(char const * path, bool gammaCorrection)
 {
     unsigned int textureID;
     glGenTextures(1, &textureID);
@@ -595,16 +594,25 @@ unsigned int loadTexture(char const * path)
     unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
     if (data)
     {
-        GLenum format;
+        GLenum internalFormat;
+        GLenum dataFormat;
         if (nrComponents == 1)
-            format = GL_RED;
+        {
+            internalFormat = dataFormat = GL_RED;
+        }
         else if (nrComponents == 3)
-            format = GL_RGB;
+        {
+            internalFormat = gammaCorrection ? GL_SRGB : GL_RGB;
+            dataFormat = GL_RGB;
+        }
         else if (nrComponents == 4)
-            format = GL_RGBA;
+        {
+            internalFormat = gammaCorrection ? GL_SRGB_ALPHA : GL_RGBA;
+            dataFormat = GL_RGBA;
+        }
 
         glBindTexture(GL_TEXTURE_2D, textureID);
-        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, dataFormat, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

@@ -25,6 +25,7 @@ in vec3 FragPos;
 
 uniform PointLight pointLight;
 uniform Material material;
+uniform bool gamma;
 
 uniform vec3 viewPosition;
 // calculates the color when using a point light.
@@ -38,7 +39,9 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     // attenuation
     float distance = length(light.position - fragPos);
-    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
+
+    float attenuation = 1.0 / (gamma ? distance * distance : (light.constant + light.linear * distance + light.quadratic * (distance * distance)));
+
     // combine results
     vec3 ambient = light.ambient * vec3(texture(material.texture_diffuse1, TexCoords));
     vec3 diffuse = light.diffuse * diff * vec3(texture(material.texture_diffuse1, TexCoords));
@@ -54,5 +57,7 @@ void main()
     vec3 normal = normalize(Normal);
     vec3 viewDir = normalize(viewPosition - FragPos);
     vec3 result = CalcPointLight(pointLight, normal, FragPos, viewDir);
+    if(gamma)
+        result = pow(result, vec3(1.0/2.2));
     FragColor = vec4(result, 1.0);
 }
