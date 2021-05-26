@@ -86,9 +86,8 @@ void ProgramState::SaveToFile(std::string filename) {
         << camera.Position.x << '\n'
         << camera.Position.y << '\n'
         << camera.Position.z << '\n'
-        << camera.Front.x << '\n'
-        << camera.Front.y << '\n'
-        << camera.Front.z << '\n';
+        << camera.Yaw << '\n'
+        << camera.Pitch << '\n';
 }
 
 void ProgramState::LoadFromFile(std::string filename) {
@@ -101,10 +100,10 @@ void ProgramState::LoadFromFile(std::string filename) {
            >> camera.Position.x
            >> camera.Position.y
            >> camera.Position.z
-           >> camera.Front.x
-           >> camera.Front.y
-           >> camera.Front.z;
+           >> camera.Yaw
+           >> camera.Pitch;
     }
+    camera.updateCameraVectors();
 }
 
 ProgramState *programState;

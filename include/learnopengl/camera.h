@@ -145,8 +145,8 @@ public:
         if (Zoom > 45.0f)
             Zoom = 45.0f; 
     }
-
-private:
+//konstruktor -> pregazi front, pregazi Pitch i Yaw->load popravi front -> proccesKeyboard menja Pitch i Yaw koji su 0
+//private:
     // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors()
     {
