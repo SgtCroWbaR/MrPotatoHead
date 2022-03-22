@@ -1,0 +1,148 @@
+---
+MainSourceFile:  '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+Diagnostics:
+  - DiagnosticName:  clang-diagnostic-error
+    DiagnosticMessage:
+      Message:         '''imgui.h'' file not found'
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      9
+      Replacements:    []
+  - DiagnosticName:  modernize-use-trailing-return-type
+    DiagnosticMessage:
+      Message:         use a trailing return type for this function
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      735
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          722
+          Length:          12
+          ReplacementText: auto
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          786
+          Length:          0
+          ReplacementText: ' -> unsigned int'
+  - DiagnosticName:  modernize-use-trailing-return-type
+    DiagnosticMessage:
+      Message:         use a trailing return type for this function
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      802
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          789
+          Length:          12
+          ReplacementText: auto
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          840
+          Length:          0
+          ReplacementText: ' -> unsigned int'
+  - DiagnosticName:  modernize-use-equals-default
+    DiagnosticMessage:
+      Message:         'use ''= default'' to define a trivial default constructor'
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      1630
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          1695
+          Length:          2
+          ReplacementText: '= default;'
+  - DiagnosticName:  modernize-use-trailing-return-type
+    DiagnosticMessage:
+      Message:         use a trailing return type for this function
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      2664
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          2660
+          Length:          3
+          ReplacementText: auto
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          2670
+          Length:          0
+          ReplacementText: ' -> int'
+  - DiagnosticName:  modernize-use-nullptr
+    DiagnosticMessage:
+      Message:         use nullptr
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      3153
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          3153
+          Length:          4
+          ReplacementText: nullptr
+  - DiagnosticName:  modernize-use-nullptr
+    DiagnosticMessage:
+      Message:         use nullptr
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      3159
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          3159
+          Length:          4
+          ReplacementText: nullptr
+  - DiagnosticName:  modernize-use-nullptr
+    DiagnosticMessage:
+      Message:         use nullptr
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      3184
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          3184
+          Length:          4
+          ReplacementText: nullptr
+  - DiagnosticName:  modernize-avoid-c-arrays
+    DiagnosticMessage:
+      Message:         'do not declare C-style arrays, use std::array<> instead'
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      5093
+      Replacements:    []
+  - DiagnosticName:  modernize-avoid-c-arrays
+    DiagnosticMessage:
+      Message:         'do not declare C-style arrays, use std::array<> instead'
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      7434
+      Replacements:    []
+  - DiagnosticName:  modernize-avoid-c-arrays
+    DiagnosticMessage:
+      Message:         'do not declare C-style arrays, use std::array<> instead'
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      7746
+      Replacements:    []
+  - DiagnosticName:  modernize-use-nullptr
+    DiagnosticMessage:
+      Message:         use nullptr
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      14934
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          14934
+          Length:          1
+          ReplacementText: nullptr
+  - DiagnosticName:  modernize-use-trailing-return-type
+    DiagnosticMessage:
+      Message:         use a trailing return type for this function
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      23485
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          23472
+          Length:          12
+          ReplacementText: auto
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          23537
+          Length:          0
+          ReplacementText: ' -> unsigned int'
+  - DiagnosticName:  modernize-use-trailing-return-type
+    DiagnosticMessage:
+      Message:         use a trailing return type for this function
+      FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+      FileOffset:      24924
+      Replacements:
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          24911
+          Length:          12
+          ReplacementText: auto
+        - FilePath:        '/home/user/Desktop/MrPotatoHead/src/main.cpp'
+          Offset:          24962
+          Length:          0
+          ReplacementText: ' -> unsigned int'
+...
